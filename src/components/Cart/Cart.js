@@ -1,4 +1,5 @@
 import React from 'react';
+import "./Cart.css"
 
 const Cart = (props) => {
     const cart = props.cart
@@ -6,7 +7,7 @@ const Cart = (props) => {
     const shipping = cart.reduce((total,prd) => total+prd.shipping,0)
     const tax = total *(5/100)
     return (
-        <div>
+        <div className = "cart-style">
             <h2>Order Summary</h2>
             <h4>Items ordered: {cart.length}</h4>
             <p><small>Item:{total}</small></p>

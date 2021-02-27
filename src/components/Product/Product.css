@@ -2,7 +2,12 @@
     display: flex;
     border-bottom: 1px solid lightgray;
 }
-
+.product-show{
+    display: flex;
+}
+.feature{
+    margin-left: 80px;
+}
 .product-details h4{
     color: blue;
     font-weight: 400;
