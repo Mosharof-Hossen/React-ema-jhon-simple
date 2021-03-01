@@ -14,6 +14,7 @@ const Product = (props) => {
                 <h4 >{name}</h4>
                 <div className = "product-show">
                     <div>
+                        {/* ok */}
                         <p><small>by: {seller}</small></p>
                         <h3>${price}</h3>
                         <p><small>only {stock} left in stock - order soon</small></p>
