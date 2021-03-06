@@ -4,9 +4,12 @@ import "./Cart.css"
 
 const Cart = (props) => {
     const cart = props.cart
-    const total = cart.reduce((total,prd)=>total + prd.price,0)
+    // const convertor = (num) => {num.toFixed(2)}
+    const total = cart.reduce((total,prd)=>total + prd.price *prd.quantity,0)
     const shipping = cart.reduce((total,prd) => total+prd.shipping,0)
     const tax = total *(5/100)
+    const atoz = (total + shipping  +tax).toFixed(2)
+    
     return (
         <div className = "cart-style">
             <h2>Order Summary</h2>
@@ -14,10 +17,12 @@ const Cart = (props) => {
             <p><small>Item:{total}</small></p>
             
             <p><small>Shipping and Handling:    ${shipping}</small></p>
-            <p><small>Total before tax:{total + shipping}</small></p>
-            <p><small>Estimated Tax:{tax}</small></p>
-            <h3>Order Total:	${total + shipping  +tax}</h3>
-            <Link to = "/review" ><button className = "btn-add" > Review Order</button></Link>
+            <p><small>Total before tax:{(total + shipping).toFixed(2)}</small></p>
+            <p><small>Estimated Tax:{tax.toFixed(2)}</small></p>
+            <h3>Order Total:	${atoz}</h3>
+            {
+                props.children
+            }
         </div>
     );
 };
