@@ -25,9 +25,9 @@ const Product = (props) => {
                     <div className = "feature">
                         <h3>Features</h3>
                         <ul>
-                            {
+                            {/* {
                                 features.map((des,value) =><li key={value}><small>{des.description}: {des.value}</small></li>)
-                            }
+                            } */}
                         </ul>
                         
                     </div>

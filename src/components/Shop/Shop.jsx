@@ -8,18 +8,30 @@ import "./Shop.css"
 
 const Shop = () => {
 
-    const [products , setProducts] = useState(fakeData)
+    const [products , setProducts] = useState([])
+    useEffect(()=>{
+        fetch("http://localhost:5000/products")
+        .then(res => res.json())
+        .then(data => setProducts(data))
+    },[])
     const [cart , setCart ] = useState([])
+
+
+
     useEffect(() => {
         const savedCart = getDatabaseCart()
         const productKeys = Object.keys(savedCart)
-        const cartProducts = productKeys.map(key => {
-            const product = fakeData.find( pd => pd.key === key)
-            product.quantity = savedCart[key]
-            return product
-        })
-        setCart (cartProducts)
-    },[])
+        console.log(products,productKeys)
+        if(products.length){
+            const cartProducts = productKeys.map(key => {
+                const product = products.find( pd => pd.key === key)
+                product.quantity = savedCart[key]
+                return product
+            })
+            setCart (cartProducts)
+        }
+        
+    },[products])
 
     const handelAddProduct = (product) =>{
         const toBeAddedKey = product.key
